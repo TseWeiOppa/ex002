@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <p></p>
+    <input type="button" onclick="launch()" value="啟動">
+
+    <script>
+        function launch() {
+            d3.select('p').text(random(1911, 2016));
+        }
+
+        function random(n, m) {
+            return Math.ceil(Math.random() * (m - n) + n);
+        }
+    </script>
+    <br>
+    <svg width="300" height="200" id="svg2"></svg>
+    <script>
+        d3.select("#svg2")
+            .append("line")
+            .attr("x1", 0)
+            .attr("y1", 45)
+            .attr("x2", 300)
+            .attr("y2", 45)
+            .attr("stroke", "black")
+            .attr("stroke-width", 2)
+        d3.select("#svg2")
+            .append("line")
+            .attr("x1", 0)
+            .attr("y1", 67.5)
+            .attr("x2", 300)
+            .attr("y2", 67.5)
+            .attr("stroke", "black")
+            .attr("stroke-width", 2)
+        d3.select("#svg2")
+            .append("line")
+            .attr("x1", 0)
+            .attr("y1", 90)
+            .attr("x2", 300)
+            .attr("y2", 90)
+            .attr("stroke", "black")
+            .attr("stroke-width", 2)
+        d3.select("#svg2")
+            .append("line")
+            .attr("x1", 0)
+            .attr("y1", 112.5)
+            .attr("x2", 300)
+            .attr("y2", 112.5)
+            .attr("stroke", "black")
+            .attr("stroke-width", 2)
+        d3.select("#svg2")
+            .append("line")
+            .attr("x1", 0)
+            .attr("y1", 135)
+            .attr("x2", 300)
+            .attr("y2", 135)
+            .attr("stroke", "black")
+            .attr("stroke-width", 2)
+        d3.select("#svg2")
+            .append("circle")
+            .attr("cx", 150)
+            .attr("cy", 100)
+            .attr("r", 14)
+        d3.select("#svg2")
+            .append("rect")
+            .attr("x", 160)
+            .attr("y", 45)
+            .attr("width", 5)
+            .attr("height", 58)
+        d3.select("#svg2")
+            .append("text")
+            .attr("x", 135)
+            .attr("y", 175)
+            .style('fill', 'black')
+            .style('font-size', '40px')
+            .style('font-weight', 'bold')
+            .text("A")
+    </script>
+
+    <br>
+
+    <script>
+        var svg = d3.select("body")
+            .append("svg")
+            .attr("width", 350)
+            .attr("height", 200);
+
+        for (var i = 0; i < 10; i++) {
+            var num = random(20, 300);
+            svg.append("rect")
+                .attr("x", 10)
+                .attr("y", 10 + 15 * i)
+                .attr("width", num)
+                .attr("height", 10)
+                .attr("fill", "red")
+
+            svg.append("text")
+                .attr({
+                    x: 15 + num,
+                    y: 20 + 15 * i,
+                    "font-size": "12"
+                }).text(num);
+
+        }
+    </script>
+    <br>
+    <svg width="400" height="400" id="svg3"></svg>
+    <script>
+        var formerpoints = "10,10 ";
+        var point;
+        for (var i = 0; i < 20; i++) {
+            var thisNum = random(20, 300);
+            point = (10 + thisNum) + "," + (10 + 12 * (i + 1)) + " ";
+            d3.select("#svg3")
+                .append('circle')
+                .attr({
+                    cx: 10 + thisNum,
+                    cy: 10 + 12 * (i + 1),
+                    r: 3,
+                    fill: "red"
+                });
+            d3.select("#svg3")
+                .append("text")
+                .attr({
+                    x: thisNum + 15,
+                    y: 25 + 12 * i,
+                    "font-size": 12
+                }).text(thisNum);
+            points = formerpoints + point;
+            formerpoints = point;
+            d3.select("#svg3")
+                .append("polyline")
+                .attr({
+                    "points": points,
+                    "fill": "rgba(0,0,0,0)",
+                    "stroke": "#333",
+                });
+        }
+        points = formerpoints + "10," + (21 * 12 + 10);
+        d3.select("#svg3")
+            .append("polyline")
+            .attr({
+                "points": points,
+                "fill": "rgba(0,0,0,0)",
+                "stroke": "#333",
+            });
+
+        function random(n, m) {
+            return Math.ceil(Math.random() * (m - n) + n);
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>
